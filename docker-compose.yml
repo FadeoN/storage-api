@@ -1,0 +1,15 @@
+version: "3.3"
+services:
+ backend:
+  container_name: storage-api
+  build: .
+  command: python3 main.py
+  ports:
+    - "5002:5002"
+  expose:
+    - "5002"
+  volumes:
+    - storage-data:/data
+
+volumes:
+  storage-data:
