@@ -17,7 +17,7 @@ async def get_file(filename: str):
 
 
 @router.post("/upload", status_code=status.HTTP_201_CREATED)
-async def create_upload_file(file: UploadFile = File(...)):
+async def upload_file(file: UploadFile = File(...)):
     file_location = os.path.join(APP_OPTIONS.storage_options.save_location, file.filename)  # TODO: Assign unique id
     async with aiofiles.open(file_location, "wb") as out_file:
         content = await file.read(APP_OPTIONS.storage_options.read_chunk_size)
