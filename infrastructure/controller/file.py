@@ -11,8 +11,8 @@ from infrastructure.configuration.app import APP_OPTIONS
 router = APIRouter()
 
 
-@router.get("/")
-async def get_file(filename: str):
+@router.get("/{filename}")
+async def get_file(filename):
     return FileResponse(os.path.join(APP_OPTIONS.storage_options.save_location, filename))
 
 
